@@ -1,0 +1,62 @@
+@import "../../styles";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+
+  & > .sideVideos {
+    @include position(fixed, 5rem, unset, 5rem, 5rem);
+    z-index: 9;
+    @include hideScrollbar();
+    width: 30rem;
+    overflow: auto;
+    @include flex(column, stretch, flex-start, 2rem);
+
+    @include desktop {
+      @include flex(row, stretch, flex-start, 2rem);
+      @include position(fixed, unset, 50%, unset, 12rem);
+      width: 95vw;
+      transform: translateX(-50%);
+    }
+
+    & > video {
+      background-color: $secondary;
+      border-radius: 1rem;
+      height: 17rem;
+      object-fit: cover;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  & > .selectedVideo {
+    @include position(fixed, 0, 0, 0, 0);
+    z-index: -1;
+    background-color: $dark;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  & > .buttons {
+    @include position(absolute, unset, 50%, unset, 5rem);
+    z-index: 10;
+    transform: translateX(-50%);
+
+    & > button {
+      padding: 1rem;
+      background-color: $danger;
+      color: $white;
+      font-size: 3rem;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
